@@ -14,7 +14,7 @@
 
 
 
-## 📊 **GitHub Stats**
+## 📊 GitHub Stats
 
 <div align="center">
 
@@ -28,41 +28,44 @@
             <td><b>🔔 Open PRs</b></td>
             <td><b>🔕 Closed PRs</b></td>
             <td><b>📈 Contributors</b></td>
-            <td><b>❤ Open Source</b></td>
+            <td><b>❤️ Open Source</b></td>
         </tr>
-     </thead>
+    </thead>
     <tbody>
-         <tr>
-            <td><img alt="Stars" src="https://img.shields.io/github/stars/Hunterdii/Smart-AI-Resume-Analyzer?style=flat&logo=github"/></td>
-            <td><img alt="Forks" src="https://img.shields.io/github/forks/Hunterdii/Smart-AI-Resume-Analyzer?style=flat&logo=github"/></td>
-            <td><img alt="Issues" src="https://img.shields.io/github/issues/Hunterdii/Smart-AI-Resume-Analyzer?style=flat&logo=github"/></td>
-            <td><img alt="Repo Size" src="https://img.shields.io/github/repo-size/Hunterdii/Smart-AI-Resume-Analyzer?style=flat&logo=github"/></td>
-            <td><img alt="Open PRs" src="https://img.shields.io/github/issues-pr/Hunterdii/Smart-AI-Resume-Analyzer?style=flat&logo=github"/></td>
-            <td><img alt="Closed PRs" src="https://img.shields.io/github/issues-pr-closed/Hunterdii/Smart-AI-Resume-Analyzer?style=flat&color=critical&logo=github"/></td>
-            <td><img alt="Contributors" src="https://img.shields.io/github/contributors/Hunterdii/Smart-AI-Resume-Analyzer?style=flat&logo=github"/></td>
-            <td><img src="https://badges.frapsoft.com/os/v2/open-source.svg?v=103" alt="open source"/></td>
+        <tr>
+            <td><img alt="Stars" src="https://img.shields.io/github/stars/Ramya24-source/CareerVerse?style=flat&logo=github"/></td>
+            <td><img alt="Forks" src="https://img.shields.io/github/forks/Ramya24-source/CareerVerse?style=flat&logo=github"/></td>
+            <td><img alt="Issues" src="https://img.shields.io/github/issues/Ramya24-source/CareerVerse?style=flat&logo=github"/></td>
+            <td><img alt="Repo Size" src="https://img.shields.io/github/repo-size/Ramya24-source/CareerVerse?style=flat&logo=github"/></td>
+            <td><img alt="Open PRs" src="https://img.shields.io/github/issues-pr/Ramya24-source/CareerVerse?style=flat&logo=github"/></td>
+            <td><img alt="Closed PRs" src="https://img.shields.io/github/issues-pr-closed/Ramya24-source/CareerVerse?style=flat&color=critical&logo=github"/></td>
+            <td><img alt="Contributors" src="https://img.shields.io/github/contributors/Ramya24-source/CareerVerse?style=flat&logo=github"/></td>
+            <td><img src="https://badges.frapsoft.com/os/v2/open-source.svg?v=103" alt="Open Source"/></td>
         </tr>
     </tbody>
 </table>
 
-  <h4>
-    <a href="https://resumind.streamlit.app/">View Demo</a>
+<h4>
+    <a href="#">Live Demo</a>
     <span> · </span>
-    <a href="#-setup-in-minutes">Set-Up (Installation)</a>
+    <a href="#-installation">Installation</a>
     <span> · </span>
-    <a href="mailto:het8185@gmail.com?subject=I%20Want%20The%20Project%20Report%20of%20Smart%20AI-RESUME-ANALYZER%20(2024%20 %2025)&body=Here%20Are%20My%20Details%20%F0%9F%98%89%0D%0A%0D%0AOrganization%2FCollege%20Name%3A%20%0D%0A%0D%0AFull%20Name%3A%20%0D%0A%0D%0AGitHub%20Profile%20%3A%20%0D%0A%0D%0AFrom%20where%20did%20you%20get%20to%20know%20about%20this%20project%3A%0D%0A%0D%0APurpose%20of%20asking%20project%20report%20(describe)%3A%0D%0A%0D%0A%0D%0AIf%20the%20above%20information%20satisfy%20your%20identity%20you%20will%20get%20the%20report%20to%20your%20email.">Project Report</a>
-  </h4>
-  <p>
-    <small align="justify">
-      Built with <img src="https://github.com/user-attachments/assets/00314b63-96bb-4e9a-92f6-4ead67e0fb7d" width="25" height="25"> by 
-      <a href="https://www.linkedin.com/in/het-patel-8b110525a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Het Patel</a>
-     </small>
-  </p>
-  <small align="justify"><img src="https://github.com/user-attachments/assets/76906dbc-343d-4267-ace5-048d428fff42" width="20px"> A Project Submitted for the partial fulfilment of the degree BCA at 
-    <a href="https://paruluniversity.ac.in/">Parul University</a> during academic year 2024-25
-  </small>
-</div><br/><br/>
-</div>  
+    <a href="#-features">Features</a>
+</h4>
+
+<p>
+    <small>
+        Developed with ❤️ by <b>Ramya P</b>
+    </small>
+</p>
+
+<small>
+🎓 A Final Year Project developed as part of the Bachelor of Engineering (Information Science and Engineering) curriculum. CareerVerse is an AI-powered career development platform that assists students with resume analysis, AI mock interviews, career guidance, and personalized learning recommendations.
+</small>
+
+</div>
+
+<br/><br/>
 
 
 ## 🔗 **Helpful Links**
