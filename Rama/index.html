@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareerVerse | AI-Powered Career Platform</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    :root {
+      --primary: #ffffff;
+      --secondary: #f8fafc;
+      --accent1: #3b82f6;
+      --accent2: #6366f1;
+      --accent3: #10b981;
+      --accent4: #ef4444;
+      --accent5: #8b5cf6;
+      --text: #1e293b;
+      --text-secondary: #64748b;
+      --card-bg: #ffffff;
+      --transition: all 0.3s ease;
+      --gradient: linear-gradient(135deg, var(--accent1), var(--accent2));
+      --gradient2: linear-gradient(135deg, var(--accent3), var(--accent5));
+      --shadow: 0 10px 25px rgba(0,0,0,0.08);
+      --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
+      --radius: 12px;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--primary);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      z-index: 1000;
+      padding: 15px 0;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--accent1);
+    }
+    
+    .logo i {
+      font-size: 1.8rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .nav-link:hover {
+      color: var(--accent1);
+    }
+    
+    .nav-link.active {
+      color: var(--accent1);
+    }
+    
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient);
+    }
+    
+    .auth-buttons {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn-primary {
+      background: var(--gradient);
+      color: #fff;
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--accent1);
+      background: transparent;
+      color: var(--accent1);
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 180px 0 120px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="none"><path fill="%233b82f6" opacity="0.05" d="M0,0 L1000,0 L1000,1000 L0,1000 Z M800,200 C900,300 900,500 800,600 C700,700 500,700 400,600 C300,500 300,300 400,200 C500,100 700,100 800,200 Z"></path></svg>');
+      background-size: cover;
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero-text p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .hero-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .hero-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: var(--shadow-lg);
+      width: 300px;
+      transform: rotate(5deg);
+    }
+    
+    .hero-card:nth-child(2) {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      transform: rotate(-5deg);
+      z-index: 2;
+    }
+    
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+    
+    .card-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    
+    .card-content {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 100px 0;
+      background: var(--secondary);
+    }
+    
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+    
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .feature-card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent1);
+    }
+    
+    .feature-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    
+    .feature-description {
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    
+    .feature-link {
+      color: var(--accent1);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+    
+    .feature-link:hover {
+      gap: 12px;
+    }
+
+    /* Portal Links inside Campus Card */
+    .portal-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    
+    .portal-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .admin-portal {
+      background: rgba(59, 130, 246, 0.05);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      color: var(--accent1);
+    }
+    
+    .user-portal {
+      background: rgba(16, 185, 129, 0.05);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      color: var(--accent3);
+    }
+    
+    .portal-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    /* Stats Section */
+    .stats {
+      padding: 80px 0;
+      background: var(--primary);
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+    
+    .stat-card {
+      text-align: center;
+      padding: 30px 20px;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .stat-label {
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 100px 0;
+      background: var(--gradient);
+      color: white;
+      text-align: center;
+    }
+    
+    .cta h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    
+    .cta p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+    
+    .btn-light {
+      background: white;
+      color: var(--accent1);
+    }
+
+    /* Feedback Section */
+    .feedback {
+      padding: 80px 0;
+      background: var(--secondary);
+    }
+    
+    .feedback-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    
+    .feedback-form {
+      background: white;
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent1);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+    
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .rating {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .rating-star {
+      font-size: 1.5rem;
+      color: #e2e8f0;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .rating-star:hover,
+    .rating-star.active {
+      color: #fbbf24;
+    }
+    
+    .feedback-info h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .feedback-info p {
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+    }
+    
+    .testimonial {
+      background: white;
+      padding: 25px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-top: 30px;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 15px;
+      color: var(--text);
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+    }
+    
+    .author-info h4 {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    
+    .author-info p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: white;
+      padding: 80px 0 30px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .footer-description {
+      color: #94a3b8;
+      margin-bottom: 20px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .social-link:hover {
+      background: var(--accent1);
+      transform: translateY(-3px);
+    }
+    
+    .footer-heading {
+      font-weight: 700;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .footer-link {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .footer-link:hover {
+      color: white;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .hero-image {
+        order: -1;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .nav-links, .auth-buttons {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .feedback-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .hero-buttons, .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .feedback-info h2 {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero {
+        padding: 150px 0 80px;
+      }
+      
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-card {
+        width: 250px;
+      }
+      
+      .feedback-form {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="#" class="logo">
+          <i class="fas fa-rocket"></i>
+          <span>CareerVerse</span>
+        </a>
+        
+        <nav class="nav-links">
+          <a href="#" class="nav-link active">Home</a>
+          <a href="#features" class="nav-link">Features</a>
+          <a href="http://localhost:8503/" class="nav-link">Resume</a>
+          <a href="http://localhost/roadmap/index.html" class="nav-link">Roadmap</a>
+          <a href="http://localhost/campus/user/index.php" class="nav-link">Campus</a>
+        </nav>
+        
+        <div class="auth-buttons">
+          <a href="http://localhost/Rama/auth/auth.php" class="btn btn-outline">LogOut</a>
+          <button class="btn btn-primary">Get Started</button>
+        </div>
+        
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Transform Your Career with AI-Powered Intelligence</h1>
+          <p>Experience the future of career development with our advanced AI platform. Get personalized guidance, build professional resumes, and unlock your full potential.</p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary"><i class="fas fa-rocket"></i> Start Free Trial</button>
+            <button class="btn btn-outline"><i class="fas fa-chart-line"></i> Explore Features</button>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <div class="hero-card">
+            <div class="card-header">
+              <div class="card-icon" style="background: var(--accent1);">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="card-title">Resume Score: 92%</div>
+            </div>
+            <div class="card-content">
+              Your resume is optimized for ATS and ready for applications.
+            </div>
+          </div>
+          
+          <div class="hero-card">
+            <div class="card-header">
+              <div class="card-icon" style="background: var(--accent3);">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="card-title">Career Growth</div>
+            </div>
+            <div class="card-content">
+              Your skills have improved by 35% this month.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Enterprise Career Solutions</h2>
+        <p class="section-subtitle">
+          Powered by advanced AI and machine learning, our platform delivers professional-grade tools to accelerate your career growth and maximize your potential.
+        </p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="feature-title">AI Career Analytics</h3>
+          <p class="feature-description">
+            Get personalized career insights, skill gap analysis, and growth suggestions using advanced AI.
+          </p>
+          <a href=" http://localhost:8501" class="feature-link">
+            Explore Analytics <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <h3 class="feature-title">Smart Resume Builder</h3>
+          <p class="feature-description">
+            Create ATS-ready professional resumes with AI content suggestions and industry templates.
+          </p>
+          <a href="http://localhost:8502/" class="feature-link">
+            Build Resume <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-map-marked-alt"></i>
+          </div>
+          <h3 class="feature-title">Strategic Roadmap</h3>
+          <p class="feature-description">
+            Follow a clear career roadmap with milestone tracking and actionable growth guidance.
+          </p>
+          <a href="http://localhost/roadmap/index.html" class="feature-link">
+            View Roadmap <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        
+        <!-- Campus Intelligence Hub -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-university"></i>
+          </div>
+          <h3 class="feature-title">Campus Intelligence Hub</h3>
+          <p class="feature-description">
+            Access internships, hackathons, and campus events in one integrated platform.
+          </p>
+          <div class="portal-links">
+            <a href="http://localhost/campus/admin/index.php" class="portal-link admin-portal" id="adminBtn">
+              <i class="fas fa-cogs"></i><span>Admin Dashboard</span><i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="http://localhost/campus/user/index.php" class="portal-link user-portal" id="userBtn">
+              <i class="fas fa-user-graduate"></i><span>Student Portal</span><i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h3 class="feature-title">Job Matching</h3>
+          <p class="feature-description">
+            Get matched with ideal job opportunities based on your skills, preferences, and career goals.
+          </p>
+          <a href="#" class="feature-link">
+            Find Jobs <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3 class="feature-title">Skill Development</h3>
+          <p class="feature-description">
+            Access personalized learning paths and courses to develop in-demand skills for your career.
+          </p>
+          <a href="#" class="feature-link">
+            Learn Skills <i class="fas fa-arrow-right"></i>
+          </a>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">50K+</div>
+          <div class="stat-label">Active Users</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">92%</div>
+          <div class="stat-label">Success Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">15K+</div>
+          <div class="stat-label">Career Transitions</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4.9/5</div>
+          <div class="stat-label">User Rating</div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Feedback Section
+  <section class="feedback">
+    <div class="container">
+      <div class="feedback-container">
+        <div class="feedback-info">
+          <h2>We Value Your Feedback</h2>
+          <p>Your insights help us improve CareerVerse and deliver a better experience for all users. Share your thoughts, suggestions, or report any issues you've encountered.</p>
+          
+          <div class="testimonial">
+            <p class="testimonial-text">"CareerVerse completely transformed my job search. The AI resume builder helped me land interviews at three top tech companies!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">JS</div>
+              <div class="author-info">
+                <h4>Jessica Smith</h4>
+                <p>Software Engineer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="feedback-form">
+          <form id="feedbackForm">
+            <div class="form-group">
+              <label class="form-label" for="name">Full Name</label>
+              <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Rating</label>
+              <div class="rating" id="ratingStars">
+                <i class="fas fa-star rating-star" data-rating="1"></i>
+                <i class="fas fa-star rating-star" data-rating="2"></i>
+                <i class="fas fa-star rating-star" data-rating="3"></i>
+                <i class="fas fa-star rating-star" data-rating="4"></i>
+                <i class="fas fa-star rating-star" data-rating="5"></i>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject</label>
+              <input type="text" id="subject" class="form-control" placeholder="Brief description of your feedback" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="message">Your Feedback</label>
+              <textarea id="message" class="form-control" placeholder="Tell us about your experience, suggestions, or issues..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              <i class="fas fa-paper-plane"></i> Submit Feedback
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- CTA Section
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Transform Your Career?</h2>
+      <p>Join thousands of professionals who have accelerated their career growth with CareerVerse.</p>
+      <div class="cta-buttons">
+        <button class="btn btn-light"><i class="fas fa-rocket"></i> Start Free Trial</button>
+        <button class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-chart-line"></i> Explore Features</button>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <div class="footer-logo">
+            <i class="fas fa-rocket"></i>
+            <span>CareerVerse</span>
+          </div>
+          <p class="footer-description">
+            CareerVerse is an AI-powered career platform that helps professionals and students accelerate their career growth with personalized guidance and tools.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-links-group">
+          <h3 class="footer-heading">Platform</h3>
+          <div class="footer-links">
+            <a href="#" class="footer-link">Features</a>
+            <a href="#" class="footer-link">Pricing</a>
+            <a href="#" class="footer-link">Testimonials</a>
+            <a href="#" class="footer-link">Case Studies</a>
+            <a href="http://localhost/Rama/feedback.php" class="footer-link">FeedBack</a>
+          </div>
+        </div>
+        
+        <div class="footer-links-group">
+          <h3 class="footer-heading">Resources</h3>
+          <div class="footer-links">
+            <a href="#" class="footer-link">Blog</a>
+            <a href="#" class="footer-link">Career Guides</a>
+            <a href="#" class="footer-link">Webinars</a>
+            <a href="#" class="footer-link">Help Center</a>
+          </div>
+        </div>
+        
+        <div class="footer-links-group">
+          <h3 class="footer-heading">Company</h3>
+          <div class="footer-links">
+            <a href="#" class="footer-link">About Us</a>
+            <a href="#" class="footer-link">Careers</a>
+            <a href="#" class="footer-link">Contact</a>
+            <a href="#" class="footer-link">Partners</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        &copy; 2023 CareerVerse. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // // Rating stars functionality
+    // document.addEventListener('DOMContentLoaded', function() {
+    //   const stars = document.querySelectorAll('.rating-star');
+    //   let currentRating = 0;
+      
+    //   stars.forEach(star => {
+    //     star.addEventListener('click', function() {
+    //       const rating = parseInt(this.getAttribute('data-rating'));
+    //       currentRating = rating;
+          
+    //       stars.forEach((s, index) => {
+    //         if (index < rating) {
+    //           s.classList.add('active');
+    //         } else {
+    //           s.classList.remove('active');
+    //         }
+    //       });
+    //     });
+        
+    //     star.addEventListener('mouseover', function() {
+    //       const rating = parseInt(this.getAttribute('data-rating'));
+          
+    //       stars.forEach((s, index) => {
+    //         if (index < rating) {
+    //           s.style.color = '#fbbf24';
+    //         } else {
+    //           s.style.color = '#e2e8f0';
+    //         }
+    //       });
+    //     });
+        
+    //     star.addEventListener('mouseout', function() {
+    //       stars.forEach((s, index) => {
+    //         if (index < currentRating) {
+    //           s.style.color = '#fbbf24';
+    //         } else {
+    //           s.style.color = '#e2e8f0';
+    //         }
+    //       });
+    //     });
+    //   });
+      
+    //   // Form submission
+    //   const feedbackForm = document.getElementById('feedbackForm');
+    //   feedbackForm.addEventListener('submit', function(e) {
+    //     e.preventDefault();
+        
+    //     if (currentRating === 0) {
+    //       alert('Please provide a rating before submitting your feedback.');
+    //       return;
+    //     }
+        
+    //     // In a real application, you would send the form data to a server here
+    //     alert('Thank you for your feedback! We appreciate your input.');
+    //     feedbackForm.reset();
+        
+    //     // Reset stars
+    //     stars.forEach(star => {
+    //       star.classList.remove('active');
+    //       star.style.color = '#e2e8f0';
+    //     });
+    //     currentRating = 0;
+    //   });
+    // });
+  </script>
+</body>
+</html>

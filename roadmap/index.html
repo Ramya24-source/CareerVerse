@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Career Roadmap Generator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --secondary: #7209b7;
+      --accent: #f72585;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --success: #4cc9f0;
+      --border-radius: 12px;
+      --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: var(--dark);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      overflow: hidden;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(30deg);
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      position: relative;
+    }
+
+    .form-container {
+      padding: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 1rem;
+    }
+
+    .input-with-icon {
+      position: relative;
+    }
+
+    .input-with-icon i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray);
+    }
+
+    input, select {
+      width: 100%;
+      padding: 15px 15px 15px 45px;
+      border: 2px solid #e9ecef;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: var(--transition);
+      background-color: #f8f9fa;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      background-color: white;
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+
+    .pace-options {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .pace-option {
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      border: 2px solid #e9ecef;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+      background-color: #f8f9fa;
+    }
+
+    .pace-option:hover {
+      border-color: var(--primary);
+    }
+
+    .pace-option.active {
+      border-color: var(--primary);
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .pace-option i {
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:active {
+      transform: translateY(-1px);
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+      transform: scale(0);
+      transition: transform 0.5s ease;
+    }
+
+    .btn:hover::after {
+      transform: scale(1);
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(67, 97, 238, 0.2);
+      border-top: 5px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading p {
+      font-size: 1.2rem;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .loading .dots {
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 20px;
+    }
+
+    .loading .dots div {
+      position: absolute;
+      top: 0;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--primary);
+      animation-timing-function: cubic-bezier(0, 1, 1, 0);
+    }
+
+    .loading .dots div:nth-child(1) {
+      left: 8px;
+      animation: dots1 0.6s infinite;
+    }
+
+    .loading .dots div:nth-child(2) {
+      left: 8px;
+      animation: dots2 0.6s infinite;
+    }
+
+    .loading .dots div:nth-child(3) {
+      left: 32px;
+      animation: dots2 0.6s infinite;
+    }
+
+    .loading .dots div:nth-child(4) {
+      left: 56px;
+      animation: dots3 0.6s infinite;
+    }
+
+    @keyframes dots1 {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes dots3 {
+      0% { transform: scale(1); }
+      100% { transform: scale(0); }
+    }
+
+    @keyframes dots2 {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(24px, 0); }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--gray);
+      font-size: 0.9rem;
+      border-top: 1px solid #e9ecef;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .form-container {
+        padding: 30px 20px;
+      }
+      
+      .pace-options {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1><i class="fas fa-robot"></i> AI Career Roadmap Generator</h1>
+      <p>Your personalized guide to a successful career in Artificial Intelligence</p>
+    </div>
+
+    <div class="form-container">
+      <form action="generate.php" method="POST" id="roadmapForm">
+        <div class="form-group">
+          <label for="background"><i class="fas fa-user-graduate"></i> Your Background</label>
+          <div class="input-with-icon">
+            <i class="fas fa-user"></i>
+            <input type="text" id="background" name="background" placeholder="e.g., Computer Science student, Marketing professional, Self-taught programmer" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="target_role"><i class="fas fa-bullseye"></i> Target Role</label>
+          <div class="input-with-icon">
+            <i class="fas fa-flag"></i>
+            <input type="text" id="target_role" name="target_role" placeholder="e.g., AI Researcher, ML Engineer, Data Scientist" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-tachometer-alt"></i> Learning Pace</label>
+          <div class="pace-options">
+            <div class="pace-option" data-value="slow">
+              <i class="fas fa-walking"></i>
+              <span>Slow</span>
+              <small>6-12 months</small>
+            </div>
+            <div class="pace-option active" data-value="medium">
+              <i class="fas fa-running"></i>
+              <span>Medium</span>
+              <small>3-6 months</small>
+            </div>
+            <div class="pace-option" data-value="fast">
+              <i class="fas fa-bolt"></i>
+              <span>Fast</span>
+              <small>1-3 months</small>
+            </div>
+          </div>
+          <input type="hidden" name="pace" id="pace" value="medium">
+        </div>
+
+        <button type="submit" class="btn">
+          <i class="fas fa-road"></i> Generate My Roadmap
+        </button>
+      </form>
+    </div>
+
+    <div class="footer">
+      <p>Powered by OpenAI GPT • Your AI career journey starts here</p>
+    </div>
+  </div>
+
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Creating your personalized AI career roadmap</p>
+    <div class="dots">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('roadmapForm');
+    const loading = document.getElementById('loading');
+    const paceOptions = document.querySelectorAll('.pace-option');
+    const paceInput = document.getElementById('pace');
+
+    // Handle pace selection
+    paceOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        paceOptions.forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+        paceInput.value = option.getAttribute('data-value');
+      });
+    });
+
+    // Form submission
+    form.addEventListener('submit', () => {
+      loading.style.display = 'block';
+      document.querySelector('.container').style.display = 'none';
+    });
+
+    // Add some animation to inputs on focus
+    const inputs = document.querySelectorAll('input, select');
+    inputs.forEach(input => {
+      input.addEventListener('focus', () => {
+        input.parentElement.style.transform = 'translateY(-5px)';
+      });
+      
+      input.addEventListener('blur', () => {
+        input.parentElement.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
+</body>
+</html>
